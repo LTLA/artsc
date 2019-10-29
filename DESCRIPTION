@@ -1,0 +1,27 @@
+Package: artsc
+Version: 0.98.0
+Date: 2019-10-27
+Title: Methods to Create Single-Cell Art
+Description: 
+    Implements functions for creating single-cell art of variable scientific utility.
+Authors@R: 
+    person("Aaron", "Lun", role = c("aut", "cre"), email = "infinite.monkeys.with.keyboards@gmail.com")
+Depends: SingleCellExperiment
+Imports: 
+    ggplot2,
+    ggforce
+Suggests: 
+    testthat, 
+    BiocStyle, 
+    knitr, 
+    rmarkdown
+biocViews: 
+    RNASeq, 
+    Software, 
+    GeneExpression,
+    Transcriptomics, 
+    SingleCell, 
+    Visualization
+License: GPL-3
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
