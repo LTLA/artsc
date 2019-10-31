@@ -13,9 +13,9 @@ geom_himawari <- function(mapping = NULL, data = NULL, stat = "identity",
 }
 
 GeomHimawari <- ggproto("GeomHimawari", Geom,
-    required_aes = c("x", "y", "colour", "percent"),
+    required_aes = c("x", "y", "fill", "percent"),
 
-    default_aes = aes(face=0.05, petal.ratio = 0.3, size = 2, npetals = 10),
+    default_aes = aes(color="grey50", face=0.05, petal.ratio = 0.3, size = 2, npetals = 10),
 
     draw_key = draw_key_point,
 
@@ -49,7 +49,7 @@ GeomHimawari <- ggproto("GeomHimawari", Geom,
             ),
             grid::polygonGrob(x=xperim, y=yperim,
                 id.lengths=rep(N, nrow(coords)),
-                gp = grid::gpar(fill = coords$colour)
+                gp = grid::gpar(fill = coords$fill)
             )
         )
     }
@@ -57,4 +57,4 @@ GeomHimawari <- ggproto("GeomHimawari", Geom,
 
 
 stuff <- data.frame(X=rep(LETTERS, 5), Y=as.character(rep(1:5, each=26)), LogFC=rnorm(26*5), NDetected=runif(26*5))
-ggplot(stuff) + geom_himawari(aes(x=X, y=Y, color=LogFC, percent=NDetected))
+ggplot(stuff) + geom_himawari(aes(x=X, y=Y, fill=LogFC, percent=NDetected))
