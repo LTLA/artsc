@@ -6,7 +6,8 @@
 #' compared to the average across all clusters.
 #' @param percent A numeric matrix with the same dimensions as \code{logfc}, containing the percentage of expressing cells.
 #' @param colors A logical scalar indicating whether a blue-white-red color scheme should be added automatically.
-#' This may be \code{FALSE} if values other than log-FCs are used in \code{logfc}.
+#' This can be \code{FALSE} to allow colors to be manually set if values other than log-FCs are used in \code{logfc}.
+#' @param ... Arguments to pass to \code{\link{geom_himawari}}.
 #' 
 #' @details
 #' Each matrix entry is represented by a sunflower in a grid.
@@ -57,7 +58,7 @@
 #' @export
 #' @importFrom ggplot2 ggplot aes_string scale_color_gradient2 scale_fill_gradient2
 #' theme element_blank
-plotHimawari <- function(logfc, percent, colors=TRUE) {
+plotHimawari <- function(logfc, percent, colors=TRUE, ...) {
     if (!identical(dim(logfc), dim(percent))) {
         stop("two matrices should have the same dimensions")
     }
@@ -72,7 +73,7 @@ plotHimawari <- function(logfc, percent, colors=TRUE) {
     )
 
     G <- ggplot(evals_long) + 
-        geom_himawari(aes_string(x="Row", y="Col", fill="LogFC", colour="LogFC", percent="Percent"))
+        geom_himawari(aes_string(x="Row", y="Col", fill="LogFC", colour="LogFC", percent="Percent"), ...)
 
     if (colors) {
         G <- G +
