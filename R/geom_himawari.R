@@ -90,7 +90,7 @@ GeomHimawari <- ggproto("GeomHimawari", Geom,
         # Generating points for each ellipse (gridExtra::ellipseGrob has unpredictable 'size').
         N <- 50
         perim.angles <- seq_len(N)/N*2*pi
-        FACE <- SCALE * coords$ratio/(coords$ratio + 1)
+        FACE <- SCALE * rep(coords$ratio/(coords$ratio + 1), N)
         xperim <- rep(coords$x, each=N) + sin(perim.angles) * hwidth * FACE 
         yperim <- rep(coords$y, each=N) + cos(perim.angles) * hheight * FACE
 
